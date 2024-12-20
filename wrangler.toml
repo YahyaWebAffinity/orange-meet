@@ -1,0 +1,30 @@
+name = "orange-meets-production"
+
+# https://developers.cloudflare.com/workers/platform/compatibility-dates
+compatibility_date = "2024-10-07"
+main = "./build/index.js"
+compatibility_flags = ["nodejs_compat"]
+
+[site]
+  bucket = "./public"
+
+[vars]
+CALLS_APP_ID = "72c40243f7a407294aeb039441baa842"
+TURN_SERVICE_ID = "272252cc4f2077ab46d35f9646c40016"
+account_id = "ab87312415e88c721f11dcd8a07e4a82"
+
+[[durable_objects.bindings]]
+name = "rooms"
+class_name = "ChatRoom"
+
+# Indicate that you want the ChatRoom class to be callable as Durable Objects.
+[[migrations]]
+tag = "v1" # Should be unique for each entry
+new_classes = ["ChatRoom"]
+
+enabled = true
+
+
+# The necessary secrets are:
+# - CALLS_APP_SECRET
+# To add secret, run `echo <VALUE> | wrangler secret put <NAME>`
