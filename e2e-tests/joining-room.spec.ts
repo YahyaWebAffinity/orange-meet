@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test('Two users joining the same room', async ({ browser }) => {
 	// can't use nanoid here :(
-	const location = `http://localhost:8787/${crypto.randomUUID()}`
+	const location = `https://7bc8db21.orange-meet.pages.dev:8787/${crypto.randomUUID()}`
 
 	const context = await browser.newContext()
 	const page = await context.newPage()

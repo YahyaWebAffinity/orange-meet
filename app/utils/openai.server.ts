@@ -119,6 +119,7 @@ export async function requestOpenAIService(
 ): Promise<SessionDescription> {
 	// const originalRequestURL = new URL(originalRequest.url)
 	console.log(`Request to: ${openAiModelEndpoint}`)
+
 	const endpointURL = new URL(openAiModelEndpoint)
 	endpointURL.search = searchParams?.toString() ?? ''
 	const response = await fetch(endpointURL.href, {
